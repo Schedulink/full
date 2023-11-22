@@ -1,11 +1,9 @@
 import React from "react";
 import "./About.css";
-// import Head from './Head';
 
 const About = () => {
   return (
     <div className="ab">
-      {/* <Head/> */}
       <div className="about-container">
         <h2>ABOUT SCHEDULINK</h2>
         <div className="point">

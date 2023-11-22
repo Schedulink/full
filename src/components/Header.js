@@ -4,8 +4,9 @@ import "./Header.css";
 
 const Header = () => {
   return (
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg cl">
       <img
+        alt=""
         src={logo}
         width="80"
         height="50"

@@ -1,5 +1,6 @@
 import React from "react";
 import { AgGridReact } from "ag-grid-react";
+import "./Tablestyle.css";
 
 const SubjectTable = ({
   sub_Ref,
@@ -9,19 +10,17 @@ const SubjectTable = ({
   handlefaculty,
 }) => {
   return (
-    <div>
+    <div className="table">
       <h3>Subject-table:</h3>
-      <div className="ag-theme-alpine" style={{ height: "200px" }}>
+      <div className="ag-theme-alpine" style={{ height: "300px" }}>
         <AgGridReact
           ref={sub_Ref}
           columnDefs={columnDefs}
           rowData={firstsub}
           defaultColDef={defaultColDef}
           rowSelection="single"
-          // onSelectionChanged={handlefaculty}
-          // onGridReady={onGridReady}
         ></AgGridReact>
-        <button className="btn" onClick={handlefaculty}>
+        <button className="btn btn-primary" onClick={handlefaculty}>
           select subject
         </button>
       </div>

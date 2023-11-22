@@ -21,11 +21,10 @@ const Main = () => {
   const [thirdsem, setThirdsem] = useState([]);
   const [firstsub, setFirstsub] = useState([]);
 
-  const API_DEG = "http://localhost:3500/deg_prog";
-  // const API_DEG = 'http://localhost:8000/ttgapp/degreeprogram/';
-  const API_SEM = "http://localhost:3500/semester";
-  const API_SUB = "http://localhost:3500/subject";
-  const API_FAC = "http://localhost:3500/faculty";
+  const API_DEG = "http://localhost:8000/api/deg/";
+  const API_SEM = "http://localhost:8000/api/sem/";
+  const API_SUB = "http://localhost:8000/api/sub/";
+  const API_FAC = "http://localhost:8000/api/fac/";
 
   useEffect(() => {
     Axios.get(API_DEG).then((res) => setDeg(res.data));
@@ -35,30 +34,30 @@ const Main = () => {
     Axios.get(API_SUB).then((res) => setSub(res.data));
 
     Axios.get(API_FAC).then((res) => setFac(res.data));
-
-    Axios.get("http://127.0.0.1:8000/api/").then((res) =>
-      console.log(res.data)
-    );
   }, []);
 
   const handlesubmit = (e) => {
     const data = sem.filter((d) => d.deg_name === e);
+    console.log(data);
     setFirstsem(data);
   };
 
   const handlereq_year = (e) => {
-    const data = firstsem.filter((d) => d.req_year === e);
+    const data = firstsem.filter((d) => d.reg_year === e);
+    console.log(data);
     setSecondsem(data);
   };
 
   const handlesemester = (e) => {
-    const data = secondsem.filter((d) => d.sem === e);
+    const data = secondsem.filter((d) => d.sem_type === e);
+    console.log(data);
     setThirdsem(data);
   };
 
   const handlesubject = (e) => {
-    const a = Number(e.slice(3, 4));
+    const a = Number(e.slice(3, 5));
     const data = sub.filter((d) => d.sem_id === a);
+    console.log(data);
     setFirstsub(data);
   };
 
@@ -68,41 +67,18 @@ const Main = () => {
   // const fac_rowData = TimetablerowData;
 
   return (
-    <div className="main">
-      <Degoption handlesubmit={handlesubmit} deg={deg} />
+    <div className="first">
+      <div className="main">
+        <Degoption handlesubmit={handlesubmit} deg={deg} />
 
-      <RegulationOption handlereq_year={handlereq_year} />
+        <RegulationOption handlereq_year={handlereq_year} />
 
-      <SemesterOption handlesemester={handlesemester} />
+        <SemesterOption handlesemester={handlesemester} />
 
-      <Semnum handlesubject={handlesubject} thirdsem={thirdsem} />
+        <Semnum handlesubject={handlesubject} thirdsem={thirdsem} />
 
-      <Tables fac={fac} firstsub={firstsub} setFirstsub={setFirstsub} />
-
-      {/* {facname &&
-          <>
-              <h3>{facname} Timetable</h3>
-              <div className="ag-theme-alpine" style={{height: '500px'}} >
-                <AgGridReact
-                    // ref={subfac_Ref}
-                    columnDefs={fac_colunDefs}
-                    rowData={fac_rowData}
-                    defaultColDef={defaultColDef}
-
-                    // frameworkComponents={frameworkComponents}
-                    // rowSelection='single'
-                    // enableFillHandle={enableFillHandle}
-                    rowHeight = '150'
-                    // onCellClicked={onCellClicked}
-                    // onGridReady={onGridReady}
-                >
-
-                </AgGridReact>
-
-            </div>
-          </>
-
-        } */}
+        <Tables fac={fac} firstsub={firstsub} setFirstsub={setFirstsub} />
+      </div>
     </div>
   );
 };

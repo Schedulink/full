@@ -9,18 +9,17 @@ const FacultySubjectTable = ({
   getRowData,
 }) => {
   return (
-    <div>
+    <div className="table">
       <h3>Overall-table:</h3>
-      <div className="ag-theme-alpine" style={{ height: "200px" }}>
+      <div className="ag-theme-alpine" style={{ height: "300px" }}>
         <AgGridReact
           ref={subfac_Ref}
           columnDefs={overallcolumns}
           rowData={subfac}
           defaultColDef={defaultColDef}
           rowSelection="single"
-          // onGridReady={onGridReady}
         ></AgGridReact>
-        <button className="btn" onClick={getRowData}>
+        <button className="btn btn-primary" onClick={getRowData}>
           store details
         </button>
       </div>

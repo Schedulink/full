@@ -1,12 +1,16 @@
 .btn {
   justify-content: center;
   align-items: center;
-  margin-left: 700px;
+  margin-left: 450px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
 .App {
-  background-color: blueviolet;
+  background-color: #d7e3fc;
   min-height: 1010px;
+}
+
+.table {
+  margin: 50px 50px 100px 30px;
 }

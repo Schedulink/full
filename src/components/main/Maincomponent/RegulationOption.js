@@ -4,12 +4,12 @@ const RegulationOption = ({ handlereq_year }) => {
   return (
     <div>
       <label>
-        Pick a regulation:
         <select
           name="requlation"
+          className="selop"
           onChange={(e) => handlereq_year(e.target.value)}
         >
-          <option value="default">choose 2019 or 2023</option>
+          <option value="default">Choose 2019 or 2023</option>
           <option value="2019">2019</option>
           <option value="2023">2023</option>
         </select>

@@ -8,7 +8,6 @@ import email_icon from "../Assets/email.png";
 import password_icon from "../Assets/password.png";
 
 const Fac_login = () => {
-  // Axios.get('http://127.0.0.1:8000/ttgapp/Semester/').then(res => console.log(res.data))
   const [facid, setFacid] = useState([]);
   const [email, setEmail] = useState([]);
   const [pass, setPass] = useState([]);
@@ -28,7 +27,6 @@ const Fac_login = () => {
 
   const subform = (e) => {
     e.preventDefault();
-    // console.log(LoginData);
 
     setLoginFilter(
       LoginData.filter(
@@ -52,7 +50,7 @@ const Fac_login = () => {
     if (loginfilter.length !== 0) {
       navigate("/Home");
     }
-  }, [loginfilter]);
+  }, [loginfilter, navigate]);
 
   return (
     <div className="container">
@@ -61,7 +59,7 @@ const Fac_login = () => {
         <div className="underline"></div>
       </div>
       <form onSubmit={subform}>
-        {<p>{msg}</p>}
+        {<p className="p">{msg}</p>}
         <div className="inputs">
           <div className="input">
             <img src={user_icon} alt="" />
@@ -72,7 +70,6 @@ const Fac_login = () => {
               value={facid}
               onChange={(e) => setFacid(e.target.value)}
             />
-            {/* <input type='text' name='fac_id' value={LoginData.fac_id} onChange={handlechange}/> */}
           </div>
           <div className="input">
             <img src={email_icon} alt="" />
@@ -104,8 +101,6 @@ const Fac_login = () => {
             Forgot Password?<span>Click Here!</span>
           </Link>
         </div>
-
-        {/* <div className="submit-container"></div> */}
 
         <button className="submit" type="submit">
           Login

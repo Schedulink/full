@@ -1,3 +1,65 @@
+.first {
+  background-color: #e0f4ff;
+  padding: 0 150px 0 150px;
+}
+
 .main {
-  background-color: #9ad0c2;
+  background-color: #fff;
+  /* max-width: 1200px;s */
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 60px;
+}
+
+.select-container {
+  margin-bottom: 30px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.deg-option {
+  margin-bottom: 30px;
+}
+
+.regulation-option {
+  margin-bottom: 30px;
+}
+
+.semester-option {
+  margin-bottom: 30px;
+}
+
+.semnum {
+  margin-bottom: 30px;
+}
+
+select {
+  padding: 10px;
+  width: 200px;
+  font-size: 16px;
+  border: 1px solid #c2c2c2;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #fff;
+  color: black;
+  margin: 0 auto;
+  display: flex;
+}
+.btn-facsub {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+}
+h3 {
+  color: blue;
+  padding-bottom: 30px;
+  padding-left: 38px;
+}
+
+.selop {
+  background-color: #e0c3fc;
 }

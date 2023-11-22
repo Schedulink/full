@@ -5,14 +5,11 @@ import FacultyTable from "./Tables/FacultyTable";
 import FacultySubjectTable from "./Tables/FacultySubjectTable";
 import Timetable from "./Tables/Timetable";
 import Timedata from "./Tables/Timedata";
-import Axios from "axios";
-// import ApiRequest from './ApiRequest';
 
 const Tables = ({ fac, firstsub, setFirstsub }) => {
   const [firstfac, setFirstfac] = useState([]);
   const [subfac, setSubfac] = useState([]);
   const [filtersubfac, setFiltersubfac] = useState([]);
-  // const [facname, setFacname] = useState([]);
 
   const sub_Ref = useRef();
   const fac_Ref = useRef();
@@ -41,75 +38,6 @@ const Tables = ({ fac, firstsub, setFirstsub }) => {
     { Days: "Friday" },
   ];
 
-  // const TimetablerowData = [
-  //   {
-  //     Days: "Monday",
-  //     "8:30-9:20": "SE",
-  //     "9:30-10-20": "SE",
-  //     "10:30-11:20": "SELAB",
-  //     "11:30-12:10": "SELAB",
-  //     "1:10-2:00": "DWM",
-  //     "2:00-2:50": "OSS",
-  //     "3:00-3:50": "NILL",
-  //     "3:50-4:30": "NILL",
-  //   },
-  //   {
-  //     Days: "Tuesday",
-  //     "8:30-9:20": "DWMLAB",
-  //     "9:30-10-20": "DWMLAB",
-  //     "10:30-11:20": "SELAB",
-  //     "11:30-12:10": "SELAB",
-  //     "1:10-2:00": "DAA",
-  //     "2:00-2:50": "DAA",
-  //     "3:00-3:50": "SPM",
-  //     "3:50-4:30": "NILL",
-  //   },
-  //   {
-  //     Days: "Wednesday",
-  //     "8:30-9:20": "NILL",
-  //     "9:30-10-20": "NILL",
-  //     "10:30-11:20": "DWM",
-  //     "11:30-12:10": "DWM",
-  //     "1:10-2:00": "ADBMS",
-  //     "2:00-2:50": "ADBMS",
-  //     "3:00-3:50": "NILL",
-  //     "3:50-4:30": "NILL",
-  //   },
-  //   {
-  //     Days: "Thursday",
-  //     "8:30-9:20": "NILL",
-  //     "9:30-10-20": "SPM",
-  //     "10:30-11:20": "ADBMS",
-  //     "11:30-12:10": "ADBMS",
-  //     "1:10-2:00": "OSS",
-  //     "2:00-2:50": "SPM",
-  //     "3:00-3:50": "SPM",
-  //     "3:50-4:30": "NILL",
-  //   },
-  //   {
-  //     Days: "Friday",
-  //     "8:30-9:20": "NILL",
-  //     "9:30-10-20": "SE",
-  //     "10:30-11:20": "DAA",
-  //     "11:30-12:10": "DAA",
-  //     "1:10-2:00": "OSS",
-  //     "2:00-2:50": "NILL",
-  //     "3:00-3:50": "NILL",
-  //     "3:50-4:30": "NILL",
-  //   },
-  // ];
-
-  // const handleSetFilter = (options) => {
-  //   setFiltersubfac(options);
-  // };
-  // const [isSelectOptionOpen, setIsSelectOptionOpen] = useState(true);
-  // const [val, setVal] = useState("");
-
-  // const setTcpCount = (updatedOptions) => {
-  //   setFiltersubfac(updatedOptions);
-  // };
-
-  const [val, setVal] = useState("");
   const [cellValues, setCellValues] = useState({});
   const updateCellValue = (rowIndex, colField, value) => {
     setCellValues((prevCellValues) => ({
@@ -126,31 +54,19 @@ const Tables = ({ fac, firstsub, setFirstsub }) => {
     sortable: true,
     filter: true,
     flex: 1,
-    // textAlign: "center",
     cellRenderer: Timedata,
     cellRendererParams: {
       filtersubfac,
       setFiltersubfac,
       subfac,
-      val,
-      setVal,
       cellValues,
       updateCellValue,
       table_Ref,
       Row_Index,
       Column_Name,
       Row_Name,
-
-      // setTcpCount,
-      // isSelectOptionOpen,
-      // setIsSelectOptionOpen,
-      // val,
-      // setVal,
     },
   };
-
-  // const API_SUBFAC = "http://localhost:3500/subfac";
-  // const API_SUBFAC = "http://localhost:8000/ttgapp"
 
   const frameworkComponents = {
     Timedata: Timedata,
@@ -171,84 +87,6 @@ const Tables = ({ fac, firstsub, setFirstsub }) => {
     );
   };
 
-  // function Timedata() {
-  //   // let fac_name = "";
-  //   // const [subjects, setSubjects] = useState([]);
-  //   // const [newCount, setNewCount] = useState(0);
-
-  //   // useEffect(() => {
-  //   //   setSubjects(filtersubfac);
-  //   // }, []);
-
-  //   const handleFit = (e) => {
-  //     e.preventDefault();
-  //     const selectedValue = e.target.value;
-  //     setVal(selectedValue);
-  //     // console.log(val)
-
-  //     const updatedOptions = filtersubfac.map((option) => {
-  //       if (option.sub_title === selectedValue) {
-  //         console.log(selectedValue);
-  //         const newCount = option.tcp - 1;
-  //         return { ...option, tcp: newCount, disabled: newCount === 0 };
-  //       }
-  //       return option;
-  //     });
-  //     console.log(updatedOptions);
-
-  //     console.log(isSelectOptionOpen);
-  //     console.log(val);
-
-  //     setFiltersubfac(updatedOptions);
-  //     // selected = true;
-  //     da
-  //     setIsSelectOptionOpen(false);
-
-  //     // const fac = subfac.filter((d) => d.sub_title === selectedValue);
-
-  //     // fac.map((d) => (facname = d.fac_name));
-
-  //     // console.log(facname);
-  //   };
-
-  //   const handleRetrieve = () => {
-  //     selected = false;
-  //     setIsSelectOptionOpen(!isSelectOptionOpen);
-  //   };
-
-  //   return (
-  //     <>
-  //       {!selected && (
-  //         <select
-  //           name="overall"
-  //           style={{ width: "150px", position: "relative", top: "10px" }}
-  //           onChange={handleFit}
-  //         >
-  //           <option value="default">subject</option>
-  //           {filtersubfac.map((d) => (
-  //             <option key={d.s_no} disabled={d.disabled}>
-  //               {d.sub_title}
-  //             </option>
-  //           ))}
-  //         </select>
-  //       )}
-  //       {selected && (
-  //         <div>
-  //           <p style={{ position: "relative", top: "20px", left: "30px" }}>
-  //             {val}
-  //           </p>
-  //           <button
-  //             style={{ position: "relative", left: "40px" }}
-  //             onClick={handleRetrieve}
-  //           >
-  //             edit
-  //           </button>
-  //         </div>
-  //       )}
-  //     </>
-  //   );
-  // }
-
   //Faculty-Subject-Table Data
 
   const overallcolumns = [
@@ -261,27 +99,16 @@ const Tables = ({ fac, firstsub, setFirstsub }) => {
 
   const getRowData = async () => {
     let rowData = [];
-    subfac_Ref.current.api.forEachNode((node) =>
-      // rowData.push(node.data)
-      Axios({
-        method: "post",
-        url: "http://http://localhost:8000/api/subfac/",
-        data: node.data,
-      }).then((res) => console.log(res.data))
+    subfac_Ref.current.api.forEachNode(
+      (node) => rowData.push(node.data)
+      // Axios({
+      //   method: "post",
+      //   url: "http://http://localhost:8000/api/subfac/",
+      //   data: node.data,
+      // }).then((res) => console.log(res.data))
     );
     setFiltersubfac(rowData);
     console.log(filtersubfac);
-
-    // const postoptions = {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-type':'application/json'
-    //     },
-    //     body: JSON.stringify(filtersubfac)
-    // }
-
-    // const result = await ApiRequest(API_SUBFAC,postoptions)
-    // if(result) console.log(result)
 
     // Axios.post("http://127.0.0.1:8000/api/", filtersubfac).then((res) => {
     //   if (res.status === 200) {
@@ -290,12 +117,6 @@ const Tables = ({ fac, firstsub, setFirstsub }) => {
     //     alert("Error sending data");
     //   }
     // });
-
-    // Axios({
-    //   method: "post",
-    //   url: "http://127.0.0.1:8000/api/",
-    //   data: rowData,
-    // }).then((res) => console.log(res.data));
   };
 
   //Faculty-Table Data
@@ -345,7 +166,7 @@ const Tables = ({ fac, firstsub, setFirstsub }) => {
     { headerName: "sem_Id", field: "sem_id" },
     { headerName: "sub_code", field: "sub_code" },
     { headerName: "sub_title", field: "sub_title" },
-    { headerName: "req_year", field: "req_year" },
+    // { headerName: "req_year", field: "req_year" },
     { headerName: "TCP", field: "tcp" },
   ];
 
